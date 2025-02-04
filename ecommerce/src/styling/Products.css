@@ -1,0 +1,106 @@
+.filters-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    color: white;
+}
+
+.filter-select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .313rem;
+    margin: .625rem;
+    padding: .313rem;
+}
+
+/* Setting up where the products will live */
+.item-container {
+    margin: .25rem;
+    padding: .625rem;
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #374785;
+    color: white;
+    border-radius: .25rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+/* Resizing all images */
+.item-container img {
+    height: 15rem;
+}
+
+/* Responsivity Code */
+
+/* I had to start with tablet to make it work */
+@media (max-width: 768px) {
+    .title-container {
+        width: fit-content;
+    }
+
+    #products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-container img {
+        height: 8rem;
+    }
+}
+
+/* Then mobile screens */
+@media (max-width: 488px) {
+    .title-container {
+        width: fit-content;
+    }
+
+    #products {
+        grid-template-columns: 1fr;
+    }
+
+    .item-container img {
+        height: 6rem;
+    }
+}
+
+/* A section between tablet and laptop screens */
+@media (min-width: 769px) and (max-width: 1023px) {
+    #products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-container img {
+        height: 8rem;
+    }
+}
+
+/* Running to issues with my background and this seemed to fix it */
+@media (min-width: 1024px) {
+    #products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .item-container img {
+        height: 8rem;
+    }
+}

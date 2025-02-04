@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.880280af.css",
+    "main.js": "/static/js/main.6d9150da.js",
+    "static/js/488.6efa3360.chunk.js": "/static/js/488.6efa3360.chunk.js",
+    "static/media/switchController.png": "/static/media/switchController.5f401dc9cf6591e7fb26.png",
+    "static/media/xboxController.png": "/static/media/xboxController.b3df1106e636aea64022.png",
+    "static/media/ps5Controller.png": "/static/media/ps5Controller.8768230a4e551b0c208b.png",
+    "static/media/hero-image.png": "/static/media/hero-image.95736cc1b7ca9c99bc1f.png",
+    "index.html": "/index.html",
+    "main.880280af.css.map": "/static/css/main.880280af.css.map",
+    "main.6d9150da.js.map": "/static/js/main.6d9150da.js.map",
+    "488.6efa3360.chunk.js.map": "/static/js/488.6efa3360.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.880280af.css",
+    "static/js/main.6d9150da.js"
+  ]
+}

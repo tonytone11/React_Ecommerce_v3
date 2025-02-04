@@ -1,0 +1,21 @@
+.title-container {
+    margin: auto;
+    width: fit-content;
+}
+.line {
+    width: 13.75rem;
+    border-radius: .5rem;
+    height: .25rem;
+    background-color: #a8d0e6;
+}
+.title-container .title-header1 {
+    margin: 0;
+    color: #f76c6c;
+}
+.title-container .title-header2 {
+    margin: 0;
+    color: #f8e9a1;
+    padding-left: 2rem;
+    width: 15rem;
+    font-size: 2rem;
+}
