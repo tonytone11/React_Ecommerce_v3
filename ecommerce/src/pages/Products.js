@@ -4,35 +4,18 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
-const Products = () => {
-    // Initialize state for storing all products from API
-    const [products, setProducts] = useState([]);
+const Products = ({ productItems }) => {
     // Initialize state for storing filtered/sorted products to display
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(productItems || []);
     // Initialize state for current category filter selection
     const [selectedCategory, setSelectedCategory] = useState('all');
     // Initialize state for current sort method
     const [sortBy, setSortBy] = useState('default');
 
-    // Effect hook to fetch products when component mounts
-    useEffect(() => {
-        async function fetchProducts() {
-            // Fetch products from API endpoint
-            const response = await fetch('/api/products');
-            // Convert response to JSON
-            const data = await response.json();
-            // Update both products and filtered products state
-            setProducts(data);
-            setFilteredProducts(data);
-        }
-
-        fetchProducts();
-    }, []); // Empty dependency array means this runs once on mount
-
     // Effect hook to handle filtering and sorting when dependencies change
     useEffect(() => {
         // Create copy of products array to avoid mutating original
-        let result = [...products];
+        let result = [...productItems];
 
         // Filter products by selected category if not 'all'
         if (selectedCategory !== 'all') {
@@ -59,11 +42,11 @@ const Products = () => {
 
         // Update filtered products with new sorted/filtered array
         setFilteredProducts(result);
-    }, [products, selectedCategory, sortBy]); // Re-run when these dependencies change
+    }, [productItems, selectedCategory, sortBy]); // Re-run when these dependencies change
 
     // Create array of unique categories from products
     const categories = ['all'];
-    products.forEach(product => {
+    productItems.forEach(product => {
         // Add category to array if it exists and isn't already included
         if (product.category && !categories.includes(product.category)) {
             categories.push(product.category);
