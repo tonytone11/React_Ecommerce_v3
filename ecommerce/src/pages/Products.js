@@ -11,13 +11,36 @@ const Products = ({ productItems }) => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [sortBy, setSortBy] = useState('default');
 
-    useEffect(() => {
-        let result = [...productItems];
+    const assignCategories = (products) => {
+        return products.map(product => {
+            let category = 'accessories'; // default category
+            const name = product.name.toLowerCase();
 
+            if (name.includes('playstation') || name.includes('xbox') || name.includes('nintendo')) {
+                category = 'consoles';
+            } else if (name.includes('controller')) {
+                category = 'controllers';
+            } else if (name.includes('headset') || name.includes('headphone')) {
+                category = 'headsets';
+            } else if (name.includes('keyboard')) {
+                category = 'keyboards';
+            }
+
+            return { ...product, category };
+        });
+    };
+
+    useEffect(() => {
+        // First assign categories
+        const productsWithCategories = assignCategories(productItems);
+        let result = [...productsWithCategories];
+
+        // Then filter by category
         if (selectedCategory !== 'all') {
             result = result.filter(item => item.category === selectedCategory);
         }
 
+        // Then sort
         switch (sortBy) {
             case 'price-low':
                 result.sort((a, b) => a.price - b.price);
@@ -38,13 +61,6 @@ const Products = ({ productItems }) => {
         setFilteredProducts(result);
     }, [productItems, selectedCategory, sortBy]);
 
-    const categories = ['all'];
-    productItems.forEach(product => {
-        if (product.category && !categories.includes(product.category)) {
-            categories.push(product.category);
-        }
-    });
-
     const capitalizeFirstLetter = (string) => {
         if (!string) return '';
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -59,7 +75,6 @@ const Products = ({ productItems }) => {
                     <Filter
                         selectedCategory={selectedCategory}
                         setSelectedCategory={setSelectedCategory}
-                        categories={categories}
                         capitalizeFirstLetter={capitalizeFirstLetter}
                     />
                     <Sort sortBy={sortBy} setSortBy={setSortBy} />
