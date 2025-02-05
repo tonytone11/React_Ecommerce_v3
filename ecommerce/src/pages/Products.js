@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Sort from '../components/Sort';
 import Filter from '../components/Filter';
+import ProductCard from '../components/ProductCard';
 
 const Products = ({ productItems }) => {
     const [filteredProducts, setFilteredProducts] = useState(productItems || []);
@@ -82,12 +83,7 @@ const Products = ({ productItems }) => {
 
                 <div id="products">
                     {filteredProducts.map((item, index) => (
-                        <div key={index} className="item-container">
-                            <img src={item.image} alt={item.name} />
-                            <h3>{item.name}</h3>
-                            <p>{item.price}</p>
-                            <p>{item.description}</p>
-                        </div>
+                        <ProductCard key={index} product={item} />
                     ))}
                 </div>
             </section>
